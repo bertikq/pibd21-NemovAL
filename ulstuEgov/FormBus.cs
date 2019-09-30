@@ -12,7 +12,9 @@ namespace ulstuEgov
         private Button buttonDown;
         private Button buttonLeft;
         private Button buttonUp;
-        Bus bus;
+        private Button button1;
+        private Button button2;
+        ITransport bus;
 
         public FormBus()
         {
@@ -28,19 +30,21 @@ namespace ulstuEgov
             this.buttonDown = new System.Windows.Forms.Button();
             this.buttonRight = new System.Windows.Forms.Button();
             this.fieldDraw = new System.Windows.Forms.PictureBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.fieldDraw)).BeginInit();
             this.SuspendLayout();
             // 
             // buttonCreateAir
             // 
-            this.buttonCreateAir.Location = new System.Drawing.Point(44, 57);
+            this.buttonCreateAir.Location = new System.Drawing.Point(43, 12);
             this.buttonCreateAir.Name = "buttonCreateAir";
             this.buttonCreateAir.Size = new System.Drawing.Size(127, 51);
             this.buttonCreateAir.TabIndex = 1;
-            this.buttonCreateAir.Text = "Create Bus";
+            this.buttonCreateAir.Text = "Create Base Bus";
             this.buttonCreateAir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.buttonCreateAir.UseVisualStyleBackColor = true;
-            this.buttonCreateAir.Click += new System.EventHandler(this.ButtonCreateAir_Click);
+            this.buttonCreateAir.Click += new System.EventHandler(this.ButtonCreateBaseBus);
             // 
             // buttonUp
             // 
@@ -99,9 +103,33 @@ namespace ulstuEgov
             this.fieldDraw.TabIndex = 0;
             this.fieldDraw.TabStop = false;
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(204, 12);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(127, 51);
+            this.button1.TabIndex = 6;
+            this.button1.Text = "Create Turbo Bus";
+            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.ButtonCreateTurboBus);
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(347, 12);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(127, 51);
+            this.button2.TabIndex = 7;
+            this.button2.Text = "Create Bus With Accord";
+            this.button2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.ButtonCreateBusWithAccord);
+            // 
             // FormBus
             // 
             this.ClientSize = new System.Drawing.Size(713, 448);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.buttonUp);
             this.Controls.Add(this.buttonLeft);
             this.Controls.Add(this.buttonDown);
@@ -115,10 +143,10 @@ namespace ulstuEgov
 
         }
 
-        private void ButtonCreateAir_Click(object sender, System.EventArgs e)
+        private void ButtonCreateBaseBus(object sender, System.EventArgs e)
         {
-            bus = new Bus(new Transform(new Position(fieldDraw.Width / 2, fieldDraw.Height / 2), Direction.Right), Color.Black, Color.Red, 15);
-            bus.SetSizeWindow(fieldDraw.Width, fieldDraw.Height);
+            bus = new BaseBus(15, Color.Black, 15, Color.Red);
+            bus.SetPosition(fieldDraw.Width / 2, fieldDraw.Height / 2, fieldDraw.Width, fieldDraw.Height);
             Draw();
         }
 
@@ -126,7 +154,7 @@ namespace ulstuEgov
         {
             Bitmap bmp = new Bitmap(fieldDraw.Width, fieldDraw.Height);
             Graphics g = Graphics.FromImage(bmp);
-            bus.DrawBus(g);
+            bus.Draw(g);
             fieldDraw.Image = bmp;
         }
 
@@ -152,6 +180,20 @@ namespace ulstuEgov
                 Draw();
             }
             catch { }
+        }
+
+        private void ButtonCreateTurboBus(object sender, EventArgs e)
+        {
+            bus = new TurboBus(15, Color.Black, 15, Color.Green, Color.Red, 10, Color.Purple, Color.Brown, 20);
+            bus.SetPosition(fieldDraw.Width / 2, fieldDraw.Height / 2, fieldDraw.Width, fieldDraw.Height);
+            Draw();
+        }
+
+        private void ButtonCreateBusWithAccord(object sender, EventArgs e)
+        {
+            bus = new BusWithAccros(15, Color.Black, 15, Color.Green, Color.Red, Color.Green, 40, 2, 100);
+            bus.SetPosition(fieldDraw.Width / 2, fieldDraw.Height / 2, fieldDraw.Width, fieldDraw.Height);
+            Draw();
         }
     }
 }
