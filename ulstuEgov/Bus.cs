@@ -34,10 +34,6 @@ namespace ulstuEgov
             radWheel = 15;
         }
 
-        public void ChangeDirection(Direction direction)
-        {
-            transform.direction = direction;
-        }
         public void Move(Direction dir)
         {
             switch (dir)
