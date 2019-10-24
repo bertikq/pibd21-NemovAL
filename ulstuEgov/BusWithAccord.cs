@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ulstuEgov
 {
-    class BusWithAccros : BaseBus
+    class BusWithAcсord : BaseBus
     {
         public Color accordColor { private set; get; }
 
@@ -17,7 +17,7 @@ namespace ulstuEgov
 
         public int widthHalfBus { private set; get; }
 
-        public BusWithAccros(int speed, Color mainColor, float radWheel, Color colorAccord, Color colorWheels,
+        public BusWithAcсord(int speed, Color mainColor, float radWheel, Color colorWheels,
             Color accordColor, int widthAccord, int paddingAccord, int widthHalfBus) : base(speed, mainColor, radWheel, colorWheels)
         {
             this.accordColor = accordColor;
