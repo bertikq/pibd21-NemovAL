@@ -117,7 +117,7 @@ namespace ulstuEgov
 
         private void ButtonCreateAir_Click(object sender, System.EventArgs e)
         {
-            bus = new Bus(new Transform(new Position(fieldDraw.Width / 2, fieldDraw.Height / 2), Direction.Right), Color.Black, Color.Red, 15);
+            bus = new Bus(fieldDraw.Width / 2, fieldDraw.Height / 2, Color.Black, Color.Red, 15);
             bus.SetSizeWindow(fieldDraw.Width, fieldDraw.Height);
             Draw();
         }
