@@ -40,5 +40,10 @@ namespace ulstuEgov
             Pen penWheel = new Pen(colorWheels);
             g.DrawEllipse(penWheel, posX + width / 2 + widthAccord + (widthHalfBus / 2 - radWheel / 2), posY + (height / 2) - (radWheel / 2), radWheel, radWheel);
         }
+
+        public void SetAccordColor(Color color)
+        {
+            accordColor = color;
+        }
     }
 }
