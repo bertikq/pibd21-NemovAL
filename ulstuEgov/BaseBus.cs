@@ -14,12 +14,24 @@ namespace ulstuEgov
         protected float radWheel;
 
         protected Color colorWheels;
-        public BaseBus(int speed, Color mainColor, float radWheel, Color colorWings)
+        public BaseBus(int speed, Color mainColor, float radWheel, Color colorWheels)
         {
             this.speed = speed;
             this.mainColor = mainColor;
             this.radWheel = radWheel;
-            this.colorWheels = colorWings;
+            this.colorWheels = colorWheels;
+        }
+
+        public BaseBus(string save)
+        {
+            string[] mas = save.Split(';');
+            if (mas.Length == 4)
+            {
+                speed = int.Parse(mas[0]);
+                mainColor = Color.FromName(mas[1]);
+                radWheel = float.Parse(mas[2]);
+                colorWheels = Color.FromName(mas[3]);
+            }
         }
 
         public override void Draw(Graphics g)
@@ -56,6 +68,11 @@ namespace ulstuEgov
                         posY += speed;
                     break;
             }
+        }
+
+        public override string ToString()
+        {
+            return String.Join(";", new object[] { speed, mainColor.Name, radWheel, colorWheels.Name });
         }
     }
 }

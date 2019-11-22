@@ -58,10 +58,10 @@ namespace ulstuEgov
         {
             if (bus != null)
             {
-                if (bus is BusWithAcсord)
+                if (bus is BusWithAccord)
                 {
                     (bus as
-                   BusWithAcсord).SetAccordColor((Color)e.Data.GetData(typeof(Color)));
+                   BusWithAccord).SetAccordColor((Color)e.Data.GetData(typeof(Color)));
                     Draw();
                 }
             }
@@ -118,7 +118,7 @@ namespace ulstuEgov
                     bus = new BaseBus(20, Color.White, 10, Color.Black);
                     break;
                 case "Автобус с Гармошкой":
-                    bus = new BusWithAcсord(20, Color.White, 10, Color.Black, Color.Black, 20, 1, 50);
+                    bus = new BusWithAccord(20, Color.White, 10, Color.Black, Color.Black, 20, 1, 50);
                     break;
             }
             Draw();
