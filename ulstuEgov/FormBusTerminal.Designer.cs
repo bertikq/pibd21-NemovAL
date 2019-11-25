@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBoxGetCar = new System.Windows.Forms.GroupBox();
             this.pictureBoxTake = new System.Windows.Forms.PictureBox();
             this.getCar = new System.Windows.Forms.Button();
             this.maskedTextBoxIndex = new System.Windows.Forms.MaskedTextBox();
@@ -36,30 +36,30 @@
             this.pictureBoxTerminal = new System.Windows.Forms.PictureBox();
             this.listBoxLevels = new System.Windows.Forms.ListBox();
             this.selectAuto = new System.Windows.Forms.Button();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.файлToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.сохранитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.загрузитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
-            this.groupBox1.SuspendLayout();
+            this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
+            this.groupBoxGetCar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTake)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTerminal)).BeginInit();
-            this.menuStrip1.SuspendLayout();
+            this.menuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.pictureBoxTake);
-            this.groupBox1.Controls.Add(this.getCar);
-            this.groupBox1.Controls.Add(this.maskedTextBoxIndex);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(511, 248);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(277, 188);
-            this.groupBox1.TabIndex = 3;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Забрать машину";
+            this.groupBoxGetCar.Controls.Add(this.pictureBoxTake);
+            this.groupBoxGetCar.Controls.Add(this.getCar);
+            this.groupBoxGetCar.Controls.Add(this.maskedTextBoxIndex);
+            this.groupBoxGetCar.Controls.Add(this.label1);
+            this.groupBoxGetCar.Location = new System.Drawing.Point(511, 248);
+            this.groupBoxGetCar.Name = "groupBox1";
+            this.groupBoxGetCar.Size = new System.Drawing.Size(277, 188);
+            this.groupBoxGetCar.TabIndex = 3;
+            this.groupBoxGetCar.TabStop = false;
+            this.groupBoxGetCar.Text = "Забрать машину";
             // 
             // pictureBoxTake
             // 
@@ -126,14 +126,14 @@
             // 
             // menuStrip1
             // 
-            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.файлToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(800, 28);
-            this.menuStrip1.TabIndex = 6;
-            this.menuStrip1.Text = "menuStrip1";
+            this.menuStrip.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip.Name = "menuStrip1";
+            this.menuStrip.Size = new System.Drawing.Size(800, 28);
+            this.menuStrip.TabIndex = 6;
+            this.menuStrip.Text = "menuStrip1";
             // 
             // файлToolStripMenuItem
             // 
@@ -160,12 +160,12 @@
             // 
             // openFileDialog1
             // 
-            this.openFileDialog1.FileName = "openFileDialog1";
-            this.openFileDialog1.Filter = "«txt file | *.txt";
+            this.openFileDialog.FileName = "openFileDialog1";
+            this.openFileDialog.Filter = "«txt file | *.txt";
             // 
             // saveFileDialog1
             // 
-            this.saveFileDialog1.Filter = "«txt file | *.txt";
+            this.saveFileDialog.Filter = "«txt file | *.txt";
             // 
             // FormBusTerminal
             // 
@@ -174,18 +174,18 @@
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.selectAuto);
             this.Controls.Add(this.listBoxLevels);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.groupBoxGetCar);
             this.Controls.Add(this.pictureBoxTerminal);
-            this.Controls.Add(this.menuStrip1);
-            this.MainMenuStrip = this.menuStrip1;
+            this.Controls.Add(this.menuStrip);
+            this.MainMenuStrip = this.menuStrip;
             this.Name = "FormBusTerminal";
             this.Text = "FormBusTerminal";
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.groupBoxGetCar.ResumeLayout(false);
+            this.groupBoxGetCar.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTake)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTerminal)).EndInit();
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
+            this.menuStrip.ResumeLayout(false);
+            this.menuStrip.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -194,18 +194,18 @@
         #endregion
 
         private System.Windows.Forms.PictureBox pictureBoxTerminal;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox groupBoxGetCar;
         private System.Windows.Forms.MaskedTextBox maskedTextBoxIndex;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBoxTake;
         private System.Windows.Forms.Button getCar;
         private System.Windows.Forms.ListBox listBoxLevels;
         private System.Windows.Forms.Button selectAuto;
-        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.MenuStrip menuStrip;
         private System.Windows.Forms.ToolStripMenuItem файлToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem сохранитьToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem загрузитьToolStripMenuItem;
-        private System.Windows.Forms.OpenFileDialog openFileDialog1;
-        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
+        private System.Windows.Forms.OpenFileDialog openFileDialog;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog;
     }
 }

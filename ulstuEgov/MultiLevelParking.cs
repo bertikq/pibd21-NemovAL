@@ -39,7 +39,7 @@ namespace ulstuEgov
             }
         }
 
-        public bool SaveData(string filename)
+        public void SaveData(string filename)
         {
             if (File.Exists(filename))
             {
@@ -69,7 +69,6 @@ namespace ulstuEgov
                     }
                 }
             }
-            return true;
         }
 
         private void WriteToFile(string text, FileStream stream)
@@ -78,11 +77,11 @@ namespace ulstuEgov
             stream.Write(info, 0, info.Length);
         }
 
-        public bool LoadData(string filename)
+        public void LoadData(string filename)
         {
             if (!File.Exists(filename))
             {
-                return false;
+                throw new FileNotFoundException();
             }
             using (StreamReader fs = new StreamReader(filename))
             {
@@ -98,7 +97,7 @@ namespace ulstuEgov
                 }
                 else
                 {
-                    return false;
+                    throw new Exception("Неверный формат файла");
                 }
                 int counter = -1;
                 ITransport bus = null;
@@ -125,7 +124,6 @@ namespace ulstuEgov
                     terminalStages[counter][Convert.ToInt32(line.Split(':')[0])] = bus;
                 }
             }
-            return true;
         }
     }
 }
