@@ -45,13 +45,12 @@ namespace ulstuEgov
             {
                 File.Delete(filename);
             }
-            using (FileStream fs = new FileStream(filename, FileMode.Create))
+            using (StreamWriter fs = new StreamWriter(filename, false))
             {
-                WriteToFile("CountLeveles:" + terminalStages.Count +
-               Environment.NewLine, fs);
+                fs.WriteLine("CountLeveles:" + terminalStages.Count);
                 foreach (var level in terminalStages)
                 {
-                    WriteToFile("Level" + Environment.NewLine, fs);
+                    fs.WriteLine("Level");
                     for (int i = 0; i < countPlaces; i++)
                     {
                         var bus = level[i];
@@ -59,13 +58,13 @@ namespace ulstuEgov
                         {
                             if (bus.GetType().Name == "BaseBus")
                             {
-                                WriteToFile(i + ":BaseBus:", fs);
+                                fs.Write(i + ":BaseBus:");
                             }
                             if (bus.GetType().Name == "BusWithAccord")
                             {
-                                WriteToFile(i + ":BusWithAccord:", fs);
+                                fs.Write(i + ":BusWithAccord:");
                             }
-                            WriteToFile(bus + Environment.NewLine, fs);
+                            fs.WriteLine(bus);
                         }
                     }
                 }
@@ -85,54 +84,46 @@ namespace ulstuEgov
             {
                 return false;
             }
-            string bufferTextFromFile = "";
-            using (FileStream fs = new FileStream(filename, FileMode.Open))
+            using (StreamReader fs = new StreamReader(filename))
             {
-                byte[] b = new byte[fs.Length];
-                UTF8Encoding temp = new UTF8Encoding(true);
-                while (fs.Read(b, 0, b.Length) > 0)
+                string line = fs.ReadLine();
+                if (line.Contains("CountLeveles"))
                 {
-                    bufferTextFromFile += temp.GetString(b);
+                    int count = Convert.ToInt32(line.Split(':')[1]);
+                    if (terminalStages != null)
+                    {
+                        terminalStages.Clear();
+                    }
+                    terminalStages = new List<BusTerminal<ITransport>>(count);
                 }
-            }
-            bufferTextFromFile = bufferTextFromFile.Replace("\r", "");
-            var strs = bufferTextFromFile.Split('\n');
-            if (strs[0].Contains("CountLeveles"))
-            {
-                int count = Convert.ToInt32(strs[0].Split(':')[1]);
-                if (terminalStages != null)
+                else
                 {
-                    terminalStages.Clear();
+                    return false;
                 }
-                terminalStages = new List<BusTerminal<ITransport>>(count);
-            }
-            else
-            {
-                return false;
-            }
-            int counter = -1;
-            ITransport bus = null;
-            for (int i = 1; i < strs.Length; ++i)
-            {
-                if (strs[i] == "Level")
+                int counter = -1;
+                ITransport bus = null;
+                while ((line = fs.ReadLine()) != null)
                 {
-                    counter++;
-                    terminalStages.Add(new BusTerminal<ITransport>(countPlaces, pictureWidth, pictureHeight));
-                    continue;
+                    if (line == "Level")
+                    {
+                        counter++;
+                        terminalStages.Add(new BusTerminal<ITransport>(countPlaces, pictureWidth, pictureHeight));
+                        continue;
+                    }
+                    if (string.IsNullOrEmpty(line))
+                    {
+                        continue;
+                    }
+                    if (line.Split(':')[1] == "BaseBus")
+                    {
+                        bus = new BaseBus(line.Split(':')[2]);
+                    }
+                    else if (line.Split(':')[1] == "BusWithAccord")
+                    {
+                        bus = new BusWithAccord(line.Split(':')[2]);
+                    }
+                    terminalStages[counter][Convert.ToInt32(line.Split(':')[0])] = bus;
                 }
-                if (string.IsNullOrEmpty(strs[i]))
-                {
-                    continue;
-                }
-                if (strs[i].Split(':')[1] == "BaseBus")
-                {
-                    bus = new BaseBus(strs[i].Split(':')[2]);
-                }
-                else if (strs[i].Split(':')[1] == "BusWithAccord")
-                {
-                    bus = new BusWithAccord(strs[i].Split(':')[2]);
-                }
-                terminalStages[counter][Convert.ToInt32(strs[i].Split(':')[0])] = bus;
             }
             return true;
         }
