@@ -12,8 +12,8 @@ namespace ulstuEgov
         private Button buttonDown;
         private Button buttonLeft;
         private Button buttonUp;
-        private Button button1;
-        private Button button2;
+        private Button buttonCreateTurboBus;
+        private Button buttonCreateBusAccord;
         ITransport bus;
 
         public FormBus()
@@ -30,8 +30,8 @@ namespace ulstuEgov
             this.buttonDown = new System.Windows.Forms.Button();
             this.buttonRight = new System.Windows.Forms.Button();
             this.fieldDraw = new System.Windows.Forms.PictureBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.buttonCreateTurboBus = new System.Windows.Forms.Button();
+            this.buttonCreateBusAccord = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.fieldDraw)).BeginInit();
             this.SuspendLayout();
             // 
@@ -105,31 +105,31 @@ namespace ulstuEgov
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(204, 12);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(127, 51);
-            this.button1.TabIndex = 6;
-            this.button1.Text = "Create Turbo Bus";
-            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.ButtonCreateTurboBus);
+            this.buttonCreateTurboBus.Location = new System.Drawing.Point(204, 12);
+            this.buttonCreateTurboBus.Name = "button1";
+            this.buttonCreateTurboBus.Size = new System.Drawing.Size(127, 51);
+            this.buttonCreateTurboBus.TabIndex = 6;
+            this.buttonCreateTurboBus.Text = "Create Turbo Bus";
+            this.buttonCreateTurboBus.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.buttonCreateTurboBus.UseVisualStyleBackColor = true;
+            this.buttonCreateTurboBus.Click += new System.EventHandler(this.ButtonCreateTurboBus);
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(347, 12);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(127, 51);
-            this.button2.TabIndex = 7;
-            this.button2.Text = "Create Bus With Accord";
-            this.button2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.ButtonCreateBusWithAccord);
+            this.buttonCreateBusAccord.Location = new System.Drawing.Point(347, 12);
+            this.buttonCreateBusAccord.Name = "button2";
+            this.buttonCreateBusAccord.Size = new System.Drawing.Size(127, 51);
+            this.buttonCreateBusAccord.TabIndex = 7;
+            this.buttonCreateBusAccord.Text = "Create Bus With Accord";
+            this.buttonCreateBusAccord.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.buttonCreateBusAccord.UseVisualStyleBackColor = true;
+            this.buttonCreateBusAccord.Click += new System.EventHandler(this.ButtonCreateBusWithAccord);
             // 
             // FormBus
             // 
             this.ClientSize = new System.Drawing.Size(713, 448);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.buttonCreateBusAccord);
+            this.Controls.Add(this.buttonCreateTurboBus);
             this.Controls.Add(this.buttonUp);
             this.Controls.Add(this.buttonLeft);
             this.Controls.Add(this.buttonDown);
