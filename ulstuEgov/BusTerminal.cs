@@ -9,29 +9,36 @@ namespace ulstuEgov
 {
     class BusTerminal<T> where T : class, ITransport
     {
-        private T[] places;
+
+        Dictionary<int, T> places;
         
         private int WidthWindow { get; set; }
         private int HeightWindow { get; set; }
+
+        private int maxCount;
 
         private const int widthSizePlace = 200;
         private const int heightSizePlace = 50;
 
         public BusTerminal(int size, int widthWindow, int heightWindow)
         {
-            places = new T[size];
+            places = new Dictionary<int, T>();
             WidthWindow = widthWindow;
             HeightWindow = heightWindow;
-            for (int i = 0; i < places.Length; i++)
-                places[i] = null;
+            maxCount = size;
         }
 
         public static int operator +(BusTerminal<T> busTerminal, T bus)
         {
-            for (int i = 0; i < busTerminal.places.Length; i++)
+            if (busTerminal.places.Count == busTerminal.maxCount)
+            {
+                return -1;
+            }
+            for (int i = 0; i < busTerminal.maxCount; i++)
             {
                 if (busTerminal.CheckFreePlace(i))
                 {
+                    busTerminal.places.Add(i, bus);
                     bus.SetPosition(widthSizePlace / 2 + i / 5 * widthSizePlace + 5 - 50, i % 5 * heightSizePlace + heightSizePlace / 2,
                         busTerminal.WidthWindow, busTerminal.HeightWindow);
                     busTerminal.places[i] = bus;
@@ -43,12 +50,10 @@ namespace ulstuEgov
 
         public static T operator -(BusTerminal<T> busTerminal, int index)
         {
-            if (index < 0 || index > busTerminal.places.Length)
-                return null;
             if (!busTerminal.CheckFreePlace(index))
             {
                 T bus = busTerminal.places[index];
-                busTerminal.places[index] = null;
+                busTerminal.places.Remove(index);
                 return bus;
             }
             return null;
@@ -57,20 +62,18 @@ namespace ulstuEgov
         public void Draw(Graphics g)
         {
             DrawMarking(g);
-            for (int i = 0; i < places.Length; i++)
+            var keys = places.Keys.ToList();
+            for (int i = 0; i < keys.Count; i++)
             {
-                if (!CheckFreePlace(i))
-                {
-                    places[i].Draw(g);
-                }
+                places[keys[i]].Draw(g);
             }
         }
 
         private void DrawMarking(Graphics g)
         {
             Pen pen = new Pen(Color.Black, 3);
-            g.DrawRectangle(pen, 0, 0, (places.Length / 5) * widthSizePlace, 480);
-            for (int i = 0; i < places.Length / 5; i++)
+            g.DrawRectangle(pen, 0, 0, (maxCount / 5) * widthSizePlace, 480);
+            for (int i = 0; i < maxCount / 5; i++)
             {
                 for (int j = 0; j < 6; ++j)
                 {
@@ -83,7 +86,7 @@ namespace ulstuEgov
 
         private bool CheckFreePlace(int indexPlace)
         {
-            return places[indexPlace] == null;
+            return !places.ContainsKey(indexPlace);
         } 
     }
 }

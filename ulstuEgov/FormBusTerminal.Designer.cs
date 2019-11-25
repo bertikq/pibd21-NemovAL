@@ -36,6 +36,7 @@
             this.maskedTextBoxIndex = new System.Windows.Forms.MaskedTextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBoxTerminal = new System.Windows.Forms.PictureBox();
+            this.listBoxLevels = new System.Windows.Forms.ListBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTake)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTerminal)).BeginInit();
@@ -43,7 +44,7 @@
             // 
             // parkingBaseBus
             // 
-            this.parkingBaseBus.Location = new System.Drawing.Point(644, 12);
+            this.parkingBaseBus.Location = new System.Drawing.Point(672, 40);
             this.parkingBaseBus.Name = "parkingBaseBus";
             this.parkingBaseBus.Size = new System.Drawing.Size(116, 68);
             this.parkingBaseBus.TabIndex = 1;
@@ -53,7 +54,7 @@
             // 
             // parkingBusWithAccord
             // 
-            this.parkingBusWithAccord.Location = new System.Drawing.Point(644, 86);
+            this.parkingBusWithAccord.Location = new System.Drawing.Point(672, 142);
             this.parkingBusWithAccord.Name = "parkingBusWithAccord";
             this.parkingBusWithAccord.Size = new System.Drawing.Size(116, 68);
             this.parkingBusWithAccord.TabIndex = 2;
@@ -117,11 +118,22 @@
             this.pictureBoxTerminal.TabIndex = 0;
             this.pictureBoxTerminal.TabStop = false;
             // 
+            // listBoxLevels
+            // 
+            this.listBoxLevels.FormattingEnabled = true;
+            this.listBoxLevels.ItemHeight = 16;
+            this.listBoxLevels.Location = new System.Drawing.Point(517, 5);
+            this.listBoxLevels.Name = "listBoxLevels";
+            this.listBoxLevels.Size = new System.Drawing.Size(149, 244);
+            this.listBoxLevels.TabIndex = 4;
+            this.listBoxLevels.SelectedIndexChanged += new System.EventHandler(this.ListBoxLevels_SelectedIndexChanged);
+            // 
             // FormBusTerminal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.listBoxLevels);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.parkingBusWithAccord);
             this.Controls.Add(this.parkingBaseBus);
@@ -146,5 +158,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBoxTake;
         private System.Windows.Forms.Button getCar;
+        private System.Windows.Forms.ListBox listBoxLevels;
     }
 }
