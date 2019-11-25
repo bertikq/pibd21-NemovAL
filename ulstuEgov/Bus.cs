@@ -9,7 +9,8 @@ namespace ulstuEgov
 {
     public class Bus
     {
-        public Transform transform { get; private set; }
+        private int posX;
+        private int posY;
         private const int width = 150;
         private const int height = 40;
         private int speed;
@@ -25,9 +26,10 @@ namespace ulstuEgov
         public string NameDriver { get; set; }
 
 
-        public Bus(Transform transform, Color colorBody, Color colorWings, int speed)
+        public Bus(int posX, int posY, Color colorBody, Color colorWings, int speed)
         {
-            this.transform = transform;
+            this.posX = posX;
+            this.posY = posY;
             this.colorBody = colorBody;
             this.colorWings = colorWings;
             this.speed = speed;
@@ -39,20 +41,20 @@ namespace ulstuEgov
             switch (dir)
             {
                 case Direction.Right:
-                    if (transform.position.x + speed < widthWindow - width / 2)
-                        transform.position.x += speed;
+                    if (posX + speed < widthWindow - width / 2)
+                        posX += speed;
                     break;
                 case Direction.Left:
-                    if (transform.position.x - speed > width / 2)
-                        transform.position.x -= speed;
+                    if (posX - speed > width / 2)
+                        posX -= speed;
                     break;
                 case Direction.Up:
-                    if (transform.position.y - speed > height / 2)
-                        transform.position.y -= speed;
+                    if (posY - speed > height / 2)
+                        posY -= speed;
                     break;
                 case Direction.Down:
-                    if (transform.position.y + speed < heightWindow - height / 2)
-                        transform.position.y += speed;
+                    if (posY + speed < heightWindow - height / 2)
+                        posY += speed;
                     break;
             }
         }
@@ -67,12 +69,12 @@ namespace ulstuEgov
         {
             Pen penBody = new Pen(colorBody);
             Pen penAccord = new Pen(colorAccord);
-            g.DrawRectangle(penBody, transform.position.x - (width / 2), transform.position.y - (height / 2), width, height);
-            g.DrawRectangle(penAccord, transform.position.x - (widthAccord / 2), transform.position.y - (height / 2), width / 6, height);
+            g.DrawRectangle(penBody, posX - (width / 2), posY - (height / 2), width, height);
+            g.DrawRectangle(penAccord, posX - (widthAccord / 2), posY - (height / 2), width / 6, height);
 
             Pen pen = new Pen(colorWings);
-            g.DrawEllipse(pen, transform.position.x - (width / 3) - (radWheel / 2), transform.position.y + (height / 2) - (radWheel / 2), radWheel, radWheel);
-            g.DrawEllipse(pen, transform.position.x + (width / 3) - (radWheel / 2), transform.position.y + (height / 2) - (radWheel / 2), radWheel, radWheel);
+            g.DrawEllipse(pen, posX - (width / 3) - (radWheel / 2), posY + (height / 2) - (radWheel / 2), radWheel, radWheel);
+            g.DrawEllipse(pen, posX + (width / 3) - (radWheel / 2), posY + (height / 2) - (radWheel / 2), radWheel, radWheel);
 
         }
     }
