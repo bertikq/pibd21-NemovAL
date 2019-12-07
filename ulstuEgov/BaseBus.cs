@@ -9,7 +9,7 @@ namespace ulstuEgov
 {
     class BaseBus : Vehicle
     {
-        protected const int width = 150;
+        protected const int width = 100;
         protected const int height = 40;
         protected float radWheel;
 
