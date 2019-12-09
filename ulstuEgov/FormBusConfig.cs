@@ -24,7 +24,8 @@ namespace ulstuEgov
             panel8.MouseDown += panelColor_MouseDown;
             panel9.MouseDown += panelColor_MouseDown;
 
-            cancelButton.Click += (object sender, EventArgs e) => { Close(); };
+            cancelButton.Click += (object sender, EventArgs e) => { Close(); };
+
         }
 
         private void panelColor_MouseDown(object sender, MouseEventArgs e)
@@ -95,12 +96,14 @@ namespace ulstuEgov
         {
             label1.DoDragDrop(label1.Text, DragDropEffects.Move |
            DragDropEffects.Copy);
-        }
+        }
+
         private void labelBusAccord_MouseDown(object sender, MouseEventArgs e)
         {
             label2.DoDragDrop(label2.Text, DragDropEffects.Move |
            DragDropEffects.Copy);
-        }        private void panelCar_DragEnter(object sender, DragEventArgs e)
+        }
+        private void panelCar_DragEnter(object sender, DragEventArgs e)
         {
             if (e.Data.GetDataPresent(DataFormats.Text))
             {
@@ -110,7 +113,8 @@ namespace ulstuEgov
             {
                 e.Effect = DragDropEffects.None;
             }
-        }        private void panelCar_DragDrop(object sender, DragEventArgs e)
+        }
+        private void panelCar_DragDrop(object sender, DragEventArgs e)
         {
             switch (e.Data.GetData(DataFormats.Text).ToString())
             {
@@ -122,7 +126,8 @@ namespace ulstuEgov
                     break;
             }
             Draw();
-        }
+        }
+
 
         private void AddButton_Click(object sender, EventArgs e)
         {
