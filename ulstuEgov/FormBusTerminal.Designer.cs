@@ -124,16 +124,16 @@
             this.selectAuto.UseVisualStyleBackColor = true;
             this.selectAuto.Click += new System.EventHandler(this.SelectAuto_Click);
             // 
-            // menuStrip1
+            // menuStrip
             // 
             this.menuStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.файлToolStripMenuItem});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip.Name = "menuStrip1";
+            this.menuStrip.Name = "menuStrip";
             this.menuStrip.Size = new System.Drawing.Size(800, 28);
             this.menuStrip.TabIndex = 6;
-            this.menuStrip.Text = "menuStrip1";
+            this.menuStrip.Text = "menuStrip";
             // 
             // файлToolStripMenuItem
             // 
