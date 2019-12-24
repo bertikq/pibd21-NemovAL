@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ulstuEgov
 {
-    class BaseBus : Vehicle
+    class BaseBus : Vehicle, IComparable<BaseBus>, IEquatable<BaseBus>
     {
         protected const int width = 100;
         protected const int height = 40;
@@ -73,6 +73,80 @@ namespace ulstuEgov
         public override string ToString()
         {
             return String.Join(";", new object[] { speed, mainColor.Name, radWheel, colorWheels.Name });
+        }
+
+        public int CompareTo(BaseBus other)
+        {
+            if (other == null)
+            {
+                return 1;
+            }
+            if (speed != other.speed)
+            {
+                return speed.CompareTo(other.speed);
+            }
+            if (mainColor != other.mainColor)
+            {
+                return mainColor.Name.CompareTo(other.mainColor.Name);
+            }
+            if (radWheel != other.radWheel)
+            {
+                radWheel.CompareTo(other.radWheel);
+            }
+            if (colorWheels != other.colorWheels)
+            {
+                colorWheels.Name.CompareTo(other.colorWheels.Name);
+            }
+            return 0;
+        }
+
+        public override bool Equals(Object obj)
+        {
+            if (obj == null)
+            {
+                return false;
+            }
+            if (!(obj is BaseBus carObj))
+            {
+                return false;
+            }
+            else
+            {
+                return Equals(carObj);
+            }
+        }
+
+        public bool Equals(BaseBus other)
+        {
+            if (other == null)
+            {
+                return false;
+            }
+            if (GetType().Name != other.GetType().Name) { 
+                return false;
+            }
+            if (speed != other.speed)
+            {
+                return false;
+            }
+            if (mainColor != other.mainColor)
+            {
+                return false;
+            }
+            if (radWheel != other.radWheel)
+            {
+                return false;
+            }
+            if (colorWheels != other.colorWheels)
+            {
+                return false;
+            }
+            return true;
+        }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
         }
     }
 }

@@ -170,7 +170,8 @@ namespace ulstuEgov
                     logger.Error(ex);
                     MessageBox.Show(ex.Message, "Неизвестная ошибка при сохранении",
                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                }
+
             }
         }
 
@@ -199,6 +200,13 @@ namespace ulstuEgov
                 }
                 Draw();
             }
+        }
+
+        private void ButtonSort_Click(object sender, EventArgs e)
+        {
+            levelTerminal.Sort();
+            Draw();
+            logger.Info("Сортировка уровней");
         }
     }
 }

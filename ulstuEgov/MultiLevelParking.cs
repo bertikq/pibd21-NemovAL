@@ -51,21 +51,17 @@ namespace ulstuEgov
                 foreach (var level in terminalStages)
                 {
                     fs.WriteLine("Level");
-                    for (int i = 0; i < countPlaces; i++)
+                    foreach (ITransport transport in level)
                     {
-                        var bus = level[i];
-                        if (bus != null)
+                        if (transport.GetType().Name == "BaseBus")
                         {
-                            if (bus.GetType().Name == "BaseBus")
-                            {
-                                fs.Write(i + ":BaseBus:");
-                            }
-                            if (bus.GetType().Name == "BusWithAccord")
-                            {
-                                fs.Write(i + ":BusWithAccord:");
-                            }
-                            fs.WriteLine(bus);
+                            fs.Write(level.GetKey + ":BaseBus:");
                         }
+                        if (transport.GetType().Name == "BusWithAccord")
+                        {
+                            fs.Write(level.GetKey + ":BusWithAccord:");
+                        }
+                        fs.WriteLine(transport);
                     }
                 }
             }
@@ -124,6 +120,11 @@ namespace ulstuEgov
                     terminalStages[counter][Convert.ToInt32(line.Split(':')[0])] = bus;
                 }
             }
+        }
+
+        public void Sort()
+        {
+            terminalStages.Sort();
         }
     }
 }
