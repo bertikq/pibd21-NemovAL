@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.groupBox = new System.Windows.Forms.GroupBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.pictureBox = new System.Windows.Forms.PictureBox();
+            this.labelBusWithAccord = new System.Windows.Forms.Label();
+            this.labelBaseBus = new System.Windows.Forms.Label();
+            this.pictureBoxNewBusPanel = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel12 = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
@@ -51,7 +51,7 @@
             this.addButton = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
             this.groupBox.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxNewBusPanel)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel12.SuspendLayout();
             this.panel10.SuspendLayout();
@@ -61,8 +61,8 @@
             // 
             // groupBox
             // 
-            this.groupBox.Controls.Add(this.label2);
-            this.groupBox.Controls.Add(this.label1);
+            this.groupBox.Controls.Add(this.labelBusWithAccord);
+            this.groupBox.Controls.Add(this.labelBaseBus);
             this.groupBox.Location = new System.Drawing.Point(12, 12);
             this.groupBox.Name = "groupBox";
             this.groupBox.Size = new System.Drawing.Size(227, 208);
@@ -70,36 +70,36 @@
             this.groupBox.TabStop = false;
             this.groupBox.Text = "Тип автобуса";
             // 
-            // label2
+            // labelBusWithAccord
             // 
-            this.label2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label2.Location = new System.Drawing.Point(14, 119);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(197, 71);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Автобус с Гармошкой";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.labelBusAccord_MouseDown);
+            this.labelBusWithAccord.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.labelBusWithAccord.Location = new System.Drawing.Point(14, 119);
+            this.labelBusWithAccord.Name = "labelBusWithAccord";
+            this.labelBusWithAccord.Size = new System.Drawing.Size(197, 71);
+            this.labelBusWithAccord.TabIndex = 1;
+            this.labelBusWithAccord.Text = "Автобус с Гармошкой";
+            this.labelBusWithAccord.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelBusWithAccord.MouseDown += new System.Windows.Forms.MouseEventHandler(this.labelBusAccord_MouseDown);
             // 
-            // label1
+            // labelBaseBus
             // 
-            this.label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label1.Location = new System.Drawing.Point(14, 36);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(197, 71);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Автобус";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.labelBus_MouseDown);
+            this.labelBaseBus.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.labelBaseBus.Location = new System.Drawing.Point(14, 36);
+            this.labelBaseBus.Name = "labelBaseBus";
+            this.labelBaseBus.Size = new System.Drawing.Size(197, 71);
+            this.labelBaseBus.TabIndex = 0;
+            this.labelBaseBus.Text = "Автобус";
+            this.labelBaseBus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelBaseBus.MouseDown += new System.Windows.Forms.MouseEventHandler(this.labelBus_MouseDown);
             // 
-            // pictureBox
+            // pictureBoxNewBusPanel
             // 
-            this.pictureBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox.Location = new System.Drawing.Point(15, 23);
-            this.pictureBox.Name = "pictureBox";
-            this.pictureBox.Size = new System.Drawing.Size(274, 106);
-            this.pictureBox.TabIndex = 1;
-            this.pictureBox.TabStop = false;
+            this.pictureBoxNewBusPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureBoxNewBusPanel.Location = new System.Drawing.Point(15, 23);
+            this.pictureBoxNewBusPanel.Name = "pictureBoxNewBusPanel";
+            this.pictureBoxNewBusPanel.Size = new System.Drawing.Size(274, 106);
+            this.pictureBoxNewBusPanel.TabIndex = 1;
+            this.pictureBoxNewBusPanel.TabStop = false;
             // 
             // panel1
             // 
@@ -107,7 +107,7 @@
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.panel12);
             this.panel1.Controls.Add(this.panel10);
-            this.panel1.Controls.Add(this.pictureBox);
+            this.panel1.Controls.Add(this.pictureBoxNewBusPanel);
             this.panel1.Location = new System.Drawing.Point(245, 12);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(306, 325);
@@ -290,7 +290,7 @@
             this.Name = "FormBusConfig";
             this.Text = "FormBusConfig";
             this.groupBox.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxNewBusPanel)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel12.ResumeLayout(false);
             this.panel10.ResumeLayout(false);
@@ -303,9 +303,9 @@
         #endregion
 
         private System.Windows.Forms.GroupBox groupBox;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.PictureBox pictureBox;
+        private System.Windows.Forms.Label labelBusWithAccord;
+        private System.Windows.Forms.Label labelBaseBus;
+        private System.Windows.Forms.PictureBox pictureBoxNewBusPanel;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Panel panel6;

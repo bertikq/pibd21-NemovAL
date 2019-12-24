@@ -72,11 +72,11 @@ namespace ulstuEgov
         {
             if (bus != null)
             {
-                Bitmap bmp = new Bitmap(pictureBox.Width, pictureBox.Height);
+                Bitmap bmp = new Bitmap(pictureBoxNewBusPanel.Width, pictureBoxNewBusPanel.Height);
                 Graphics gr = Graphics.FromImage(bmp);
-                bus.SetPosition(pictureBox.Width / 3, pictureBox.Height / 2, pictureBox.Width, pictureBox.Height);
+                bus.SetPosition(pictureBoxNewBusPanel.Width / 3, pictureBoxNewBusPanel.Height / 2, pictureBoxNewBusPanel.Width, pictureBoxNewBusPanel.Height);
                 bus.Draw(gr);
-                pictureBox.Image = bmp;
+                pictureBoxNewBusPanel.Image = bmp;
             }
         }
 
@@ -94,13 +94,13 @@ namespace ulstuEgov
 
         private void labelBus_MouseDown(object sender, MouseEventArgs e)
         {
-            label1.DoDragDrop(label1.Text, DragDropEffects.Move |
+            labelBaseBus.DoDragDrop(labelBaseBus.Text, DragDropEffects.Move |
            DragDropEffects.Copy);
         }
 
         private void labelBusAccord_MouseDown(object sender, MouseEventArgs e)
         {
-            label2.DoDragDrop(label2.Text, DragDropEffects.Move |
+            labelBusWithAccord.DoDragDrop(labelBusWithAccord.Text, DragDropEffects.Move |
            DragDropEffects.Copy);
         }
         private void panelCar_DragEnter(object sender, DragEventArgs e)
