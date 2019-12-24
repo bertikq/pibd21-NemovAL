@@ -6,6 +6,7 @@ using System.Windows.Forms;
 
 namespace ulstuEgov
 {
+    public delegate void carDelegate(ITransport bus);
     static class Program
     {
         /// <summary>

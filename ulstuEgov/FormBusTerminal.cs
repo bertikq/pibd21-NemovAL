@@ -108,5 +108,28 @@ namespace ulstuEgov
         {
             Draw();
         }
+
+        private void SelectAuto_Click(object sender, EventArgs e)
+        {
+            FormBusConfig form = new FormBusConfig();
+            form.AddEvent(AddCar);
+            form.Show();
+        }
+
+        private void AddCar(ITransport car)
+        {
+            if (car != null && listBoxLevels.SelectedIndex > -1)
+            {
+                int place = levelTerminal[listBoxLevels.SelectedIndex] + car;
+                if (place > -1)
+                {
+                    Draw();
+                }
+                else
+                {
+                    MessageBox.Show("Машину не удалось поставить");
+                }
+            }
+        }
     }
 }

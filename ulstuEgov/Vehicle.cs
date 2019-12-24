@@ -25,5 +25,10 @@ namespace ulstuEgov
         }
         public abstract void Draw(Graphics g);
         public abstract void Move(Direction direction);
+
+        public void SetMainColor(Color color)
+        {
+            mainColor = color;
+        }
     }
 }

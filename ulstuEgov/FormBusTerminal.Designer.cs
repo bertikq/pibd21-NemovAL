@@ -28,8 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.parkingBaseBus = new System.Windows.Forms.Button();
-            this.parkingBusWithAccord = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.pictureBoxTake = new System.Windows.Forms.PictureBox();
             this.getCar = new System.Windows.Forms.Button();
@@ -37,30 +35,11 @@
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBoxTerminal = new System.Windows.Forms.PictureBox();
             this.listBoxLevels = new System.Windows.Forms.ListBox();
+            this.selectAuto = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTake)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTerminal)).BeginInit();
             this.SuspendLayout();
-            // 
-            // parkingBaseBus
-            // 
-            this.parkingBaseBus.Location = new System.Drawing.Point(672, 40);
-            this.parkingBaseBus.Name = "parkingBaseBus";
-            this.parkingBaseBus.Size = new System.Drawing.Size(116, 68);
-            this.parkingBaseBus.TabIndex = 1;
-            this.parkingBaseBus.Text = "Припарковать автобус";
-            this.parkingBaseBus.UseVisualStyleBackColor = true;
-            this.parkingBaseBus.Click += new System.EventHandler(this.ParkingBaseBus_Click);
-            // 
-            // parkingBusWithAccord
-            // 
-            this.parkingBusWithAccord.Location = new System.Drawing.Point(672, 142);
-            this.parkingBusWithAccord.Name = "parkingBusWithAccord";
-            this.parkingBusWithAccord.Size = new System.Drawing.Size(116, 68);
-            this.parkingBusWithAccord.TabIndex = 2;
-            this.parkingBusWithAccord.Text = "Припарковать автобус с гармошкой";
-            this.parkingBusWithAccord.UseVisualStyleBackColor = true;
-            this.parkingBusWithAccord.Click += new System.EventHandler(this.ParkingBusWithAccord_Click);
             // 
             // groupBox1
             // 
@@ -128,15 +107,24 @@
             this.listBoxLevels.TabIndex = 4;
             this.listBoxLevels.SelectedIndexChanged += new System.EventHandler(this.ListBoxLevels_SelectedIndexChanged);
             // 
+            // selectAuto
+            // 
+            this.selectAuto.Location = new System.Drawing.Point(672, 201);
+            this.selectAuto.Name = "selectAuto";
+            this.selectAuto.Size = new System.Drawing.Size(116, 41);
+            this.selectAuto.TabIndex = 5;
+            this.selectAuto.Text = "Заказать авто";
+            this.selectAuto.UseVisualStyleBackColor = true;
+            this.selectAuto.Click += new System.EventHandler(this.SelectAuto_Click);
+            // 
             // FormBusTerminal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.selectAuto);
             this.Controls.Add(this.listBoxLevels);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.parkingBusWithAccord);
-            this.Controls.Add(this.parkingBaseBus);
             this.Controls.Add(this.pictureBoxTerminal);
             this.Name = "FormBusTerminal";
             this.Text = "FormBusTerminal";
@@ -151,13 +139,12 @@
         #endregion
 
         private System.Windows.Forms.PictureBox pictureBoxTerminal;
-        private System.Windows.Forms.Button parkingBaseBus;
-        private System.Windows.Forms.Button parkingBusWithAccord;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.MaskedTextBox maskedTextBoxIndex;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBoxTake;
         private System.Windows.Forms.Button getCar;
         private System.Windows.Forms.ListBox listBoxLevels;
+        private System.Windows.Forms.Button selectAuto;
     }
 }
