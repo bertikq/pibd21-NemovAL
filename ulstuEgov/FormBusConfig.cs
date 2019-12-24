@@ -15,14 +15,14 @@ namespace ulstuEgov
         public FormBusConfig()
         {
             InitializeComponent();
-            panel2.MouseDown += panelColor_MouseDown;
-            panel3.MouseDown += panelColor_MouseDown;
-            panel4.MouseDown += panelColor_MouseDown;
-            panel5.MouseDown += panelColor_MouseDown;
-            panel6.MouseDown += panelColor_MouseDown;
-            panel7.MouseDown += panelColor_MouseDown;
-            panel8.MouseDown += panelColor_MouseDown;
-            panel9.MouseDown += panelColor_MouseDown;
+            panelBlack.MouseDown += panelColor_MouseDown;
+            panelGreen.MouseDown += panelColor_MouseDown;
+            panelRed.MouseDown += panelColor_MouseDown;
+            panelGray.MouseDown += panelColor_MouseDown;
+            panelOrange.MouseDown += panelColor_MouseDown;
+            panelYellow.MouseDown += panelColor_MouseDown;
+            panelBlue.MouseDown += panelColor_MouseDown;
+            panelWhite.MouseDown += panelColor_MouseDown;
 
             cancelButton.Click += (object sender, EventArgs e) => { Close(); };
 
@@ -59,10 +59,10 @@ namespace ulstuEgov
         {
             if (bus != null)
             {
-                if (bus is BusWithAccord)
+                if (bus is BusWithAcсord)
                 {
                     (bus as
-                   BusWithAccord).SetAccordColor((Color)e.Data.GetData(typeof(Color)));
+                   BusWithAcсord).SetAccordColor((Color)e.Data.GetData(typeof(Color)));
                     Draw();
                 }
             }
@@ -72,11 +72,11 @@ namespace ulstuEgov
         {
             if (bus != null)
             {
-                Bitmap bmp = new Bitmap(pictureBoxNewBusPanel.Width, pictureBoxNewBusPanel.Height);
+                Bitmap bmp = new Bitmap(pictureBoxCurBus.Width, pictureBoxCurBus.Height);
                 Graphics gr = Graphics.FromImage(bmp);
-                bus.SetPosition(pictureBoxNewBusPanel.Width / 3, pictureBoxNewBusPanel.Height / 2, pictureBoxNewBusPanel.Width, pictureBoxNewBusPanel.Height);
+                bus.SetPosition(pictureBoxCurBus.Width / 3, pictureBoxCurBus.Height / 2, pictureBoxCurBus.Width, pictureBoxCurBus.Height);
                 bus.Draw(gr);
-                pictureBoxNewBusPanel.Image = bmp;
+                pictureBoxCurBus.Image = bmp;
             }
         }
 
@@ -122,7 +122,7 @@ namespace ulstuEgov
                     bus = new BaseBus(20, Color.White, 10, Color.Black);
                     break;
                 case "Автобус с Гармошкой":
-                    bus = new BusWithAccord(20, Color.White, 10, Color.Black, Color.Black, 20, 1, 50);
+                    bus = new BusWithAcсord(20, Color.White, 10, Color.Black, Color.Black, 20, 1, 50);
                     break;
             }
             Draw();
