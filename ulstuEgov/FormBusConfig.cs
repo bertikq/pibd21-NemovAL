@@ -15,16 +15,17 @@ namespace ulstuEgov
         public FormBusConfig()
         {
             InitializeComponent();
-            panel2.MouseDown += panelColor_MouseDown;
-            panel3.MouseDown += panelColor_MouseDown;
-            panel4.MouseDown += panelColor_MouseDown;
-            panel5.MouseDown += panelColor_MouseDown;
-            panel6.MouseDown += panelColor_MouseDown;
-            panel7.MouseDown += panelColor_MouseDown;
-            panel8.MouseDown += panelColor_MouseDown;
-            panel9.MouseDown += panelColor_MouseDown;
+            panelBlack.MouseDown += panelColor_MouseDown;
+            panelGreen.MouseDown += panelColor_MouseDown;
+            panelRed.MouseDown += panelColor_MouseDown;
+            panelGray.MouseDown += panelColor_MouseDown;
+            panelOrange.MouseDown += panelColor_MouseDown;
+            panelYellow.MouseDown += panelColor_MouseDown;
+            panelBlue.MouseDown += panelColor_MouseDown;
+            panelWhite.MouseDown += panelColor_MouseDown;
 
-            cancelButton.Click += (object sender, EventArgs e) => { Close(); };
+            cancelButton.Click += (object sender, EventArgs e) => { Close(); };
+
         }
 
         private void panelColor_MouseDown(object sender, MouseEventArgs e)
@@ -58,10 +59,10 @@ namespace ulstuEgov
         {
             if (bus != null)
             {
-                if (bus is BusWithAccord)
+                if (bus is BusWithAcсord)
                 {
                     (bus as
-                   BusWithAccord).SetAccordColor((Color)e.Data.GetData(typeof(Color)));
+                   BusWithAcсord).SetAccordColor((Color)e.Data.GetData(typeof(Color)));
                     Draw();
                 }
             }
@@ -71,11 +72,11 @@ namespace ulstuEgov
         {
             if (bus != null)
             {
-                Bitmap bmp = new Bitmap(pictureBox.Width, pictureBox.Height);
+                Bitmap bmp = new Bitmap(pictureBoxCurBus.Width, pictureBoxCurBus.Height);
                 Graphics gr = Graphics.FromImage(bmp);
-                bus.SetPosition(pictureBox.Width / 3, pictureBox.Height / 2, pictureBox.Width, pictureBox.Height);
+                bus.SetPosition(pictureBoxCurBus.Width / 3, pictureBoxCurBus.Height / 2, pictureBoxCurBus.Width, pictureBoxCurBus.Height);
                 bus.Draw(gr);
-                pictureBox.Image = bmp;
+                pictureBoxCurBus.Image = bmp;
             }
         }
 
@@ -93,14 +94,16 @@ namespace ulstuEgov
 
         private void labelBus_MouseDown(object sender, MouseEventArgs e)
         {
-            label1.DoDragDrop(label1.Text, DragDropEffects.Move |
+            labelBaseBus.DoDragDrop(labelBaseBus.Text, DragDropEffects.Move |
            DragDropEffects.Copy);
-        }
+        }
+
         private void labelBusAccord_MouseDown(object sender, MouseEventArgs e)
         {
-            label2.DoDragDrop(label2.Text, DragDropEffects.Move |
+            labelBusWithAccord.DoDragDrop(labelBusWithAccord.Text, DragDropEffects.Move |
            DragDropEffects.Copy);
-        }        private void panelCar_DragEnter(object sender, DragEventArgs e)
+        }
+        private void panelCar_DragEnter(object sender, DragEventArgs e)
         {
             if (e.Data.GetDataPresent(DataFormats.Text))
             {
@@ -110,7 +113,8 @@ namespace ulstuEgov
             {
                 e.Effect = DragDropEffects.None;
             }
-        }        private void panelCar_DragDrop(object sender, DragEventArgs e)
+        }
+        private void panelCar_DragDrop(object sender, DragEventArgs e)
         {
             switch (e.Data.GetData(DataFormats.Text).ToString())
             {
@@ -118,11 +122,12 @@ namespace ulstuEgov
                     bus = new BaseBus(20, Color.White, 10, Color.Black);
                     break;
                 case "Автобус с Гармошкой":
-                    bus = new BusWithAccord(20, Color.White, 10, Color.Black, Color.Black, 20, 1, 50);
+                    bus = new BusWithAcсord(20, Color.White, 10, Color.Black, Color.Black, 20, 1, 50);
                     break;
             }
             Draw();
-        }
+        }
+
 
         private void AddButton_Click(object sender, EventArgs e)
         {
