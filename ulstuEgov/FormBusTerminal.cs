@@ -1,4 +1,4 @@
-﻿using NLog;
+using NLog;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -201,7 +201,6 @@ namespace ulstuEgov
                 Draw();
             }
         }
-
         private void ButtonSort_Click(object sender, EventArgs e)
         {
             levelTerminal.Sort();
