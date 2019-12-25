@@ -134,9 +134,9 @@ namespace ulstuEgov
 
         private void СохранитьToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (saveFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            if (saveFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                if (levelTerminal.SaveData(saveFileDialog1.FileName))
+                if (levelTerminal.SaveData(saveFileDialog.FileName))
                 {
                     MessageBox.Show("Сохранение прошло успешно", "Результат",
                    MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -151,9 +151,9 @@ namespace ulstuEgov
 
         private void ЗагрузитьToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (openFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            if (openFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                if (levelTerminal.LoadData(openFileDialog1.FileName))
+                if (levelTerminal.LoadData(openFileDialog.FileName))
                 {
                 MessageBox.Show("Загрузили", "Результат", MessageBoxButtons.OK,
                     MessageBoxIcon.Information);
