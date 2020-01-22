@@ -181,7 +181,6 @@ namespace ulstuEgov
             else if (places.Count > 0)
             {
                 var thisKeys = places.Keys.ToList();
-                var otherKeys = other.places.Keys.ToList();
                 for (int i = 0; i < places.Count; ++i)
                 {
                     if (places[thisKeys[i]] is BaseBus && other.places[thisKeys[i]] is BusWithAccord)
