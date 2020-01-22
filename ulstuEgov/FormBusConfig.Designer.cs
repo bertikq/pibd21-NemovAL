@@ -33,12 +33,10 @@
             this.labelBaseBus = new System.Windows.Forms.Label();
             this.pictureBoxCurBus = new System.Windows.Forms.PictureBox();
             this.panelSettingsBus = new System.Windows.Forms.Panel();
-            this.panel12 = new System.Windows.Forms.Panel();
+            this.panelDopColor = new System.Windows.Forms.Panel();
             this.labelDopColor = new System.Windows.Forms.Label();
-            this.panel10 = new System.Windows.Forms.Panel();
-            this.panel11 = new System.Windows.Forms.Panel();
+            this.panelMainColor = new System.Windows.Forms.Panel();
             this.labelMainColor = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.groupBoxColors = new System.Windows.Forms.GroupBox();
             this.panelOrange = new System.Windows.Forms.Panel();
             this.panelGray = new System.Windows.Forms.Panel();
@@ -53,9 +51,8 @@
             this.groupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCurBus)).BeginInit();
             this.panelSettingsBus.SuspendLayout();
-            this.panel12.SuspendLayout();
-            this.panel10.SuspendLayout();
-            this.panel11.SuspendLayout();
+            this.panelDopColor.SuspendLayout();
+            this.panelMainColor.SuspendLayout();
             this.groupBoxColors.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -105,8 +102,8 @@
             // 
             this.panelSettingsBus.AllowDrop = true;
             this.panelSettingsBus.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelSettingsBus.Controls.Add(this.panel12);
-            this.panelSettingsBus.Controls.Add(this.panel10);
+            this.panelSettingsBus.Controls.Add(this.panelDopColor);
+            this.panelSettingsBus.Controls.Add(this.panelMainColor);
             this.panelSettingsBus.Controls.Add(this.pictureBoxCurBus);
             this.panelSettingsBus.Location = new System.Drawing.Point(245, 12);
             this.panelSettingsBus.Name = "panelSettingsBus";
@@ -115,17 +112,17 @@
             this.panelSettingsBus.DragDrop += new System.Windows.Forms.DragEventHandler(this.panelCar_DragDrop);
             this.panelSettingsBus.DragEnter += new System.Windows.Forms.DragEventHandler(this.panelCar_DragEnter);
             // 
-            // panel12
+            // panelDopColor
             // 
-            this.panel12.AllowDrop = true;
-            this.panel12.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel12.Controls.Add(this.labelDopColor);
-            this.panel12.Location = new System.Drawing.Point(15, 232);
-            this.panel12.Name = "panel12";
-            this.panel12.Size = new System.Drawing.Size(274, 73);
-            this.panel12.TabIndex = 6;
-            this.panel12.DragDrop += new System.Windows.Forms.DragEventHandler(this.labelDopColor_DragDrop);
-            this.panel12.DragEnter += new System.Windows.Forms.DragEventHandler(this.labelBaseColor_DragEnter);
+            this.panelDopColor.AllowDrop = true;
+            this.panelDopColor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelDopColor.Controls.Add(this.labelDopColor);
+            this.panelDopColor.Location = new System.Drawing.Point(15, 232);
+            this.panelDopColor.Name = "panelDopColor";
+            this.panelDopColor.Size = new System.Drawing.Size(274, 73);
+            this.panelDopColor.TabIndex = 6;
+            this.panelDopColor.DragDrop += new System.Windows.Forms.DragEventHandler(this.labelDopColor_DragDrop);
+            this.panelDopColor.DragEnter += new System.Windows.Forms.DragEventHandler(this.labelBaseColor_DragEnter);
             // 
             // labelDopColor
             // 
@@ -136,46 +133,26 @@
             this.labelDopColor.Text = "Доп. цвет";
             this.labelDopColor.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // panel10
+            // panelMainColor
             // 
-            this.panel10.AllowDrop = true;
-            this.panel10.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel10.Controls.Add(this.panel11);
-            this.panel10.Controls.Add(this.label3);
-            this.panel10.Location = new System.Drawing.Point(15, 149);
-            this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(274, 73);
-            this.panel10.TabIndex = 4;
-            // 
-            // panel11
-            // 
-            this.panel11.AllowDrop = true;
-            this.panel11.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel11.Controls.Add(this.labelMainColor);
-            this.panel11.Location = new System.Drawing.Point(-1, -1);
-            this.panel11.Name = "panel11";
-            this.panel11.Size = new System.Drawing.Size(274, 73);
-            this.panel11.TabIndex = 5;
-            this.panel11.DragDrop += new System.Windows.Forms.DragEventHandler(this.labelBaseColor_DragDrop);
-            this.panel11.DragEnter += new System.Windows.Forms.DragEventHandler(this.labelBaseColor_DragEnter);
+            this.panelMainColor.AllowDrop = true;
+            this.panelMainColor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelMainColor.Controls.Add(this.labelMainColor);
+            this.panelMainColor.Location = new System.Drawing.Point(15, 149);
+            this.panelMainColor.Name = "panelMainColor";
+            this.panelMainColor.Size = new System.Drawing.Size(274, 73);
+            this.panelMainColor.TabIndex = 5;
+            this.panelMainColor.DragDrop += new System.Windows.Forms.DragEventHandler(this.labelBaseColor_DragDrop);
+            this.panelMainColor.DragEnter += new System.Windows.Forms.DragEventHandler(this.labelBaseColor_DragEnter);
             // 
             // labelMainColor
             // 
-            this.labelMainColor.Location = new System.Drawing.Point(3, 3);
+            this.labelMainColor.Location = new System.Drawing.Point(3, 0);
             this.labelMainColor.Name = "labelMainColor";
             this.labelMainColor.Size = new System.Drawing.Size(266, 58);
             this.labelMainColor.TabIndex = 1;
             this.labelMainColor.Text = "Основной цвет";
             this.labelMainColor.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label3
-            // 
-            this.label3.Location = new System.Drawing.Point(3, 3);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(270, 69);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "Основной цвет";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // groupBoxColors
             // 
@@ -292,9 +269,8 @@
             this.groupBox.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCurBus)).EndInit();
             this.panelSettingsBus.ResumeLayout(false);
-            this.panel12.ResumeLayout(false);
-            this.panel10.ResumeLayout(false);
-            this.panel11.ResumeLayout(false);
+            this.panelDopColor.ResumeLayout(false);
+            this.panelMainColor.ResumeLayout(false);
             this.groupBoxColors.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -318,11 +294,9 @@
         private System.Windows.Forms.Panel panelBlack;
         private System.Windows.Forms.Button addButton;
         private System.Windows.Forms.Button cancelButton;
-        private System.Windows.Forms.Panel panel10;
-        private System.Windows.Forms.Panel panel11;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Panel panel12;
+        private System.Windows.Forms.Panel panelDopColor;
         private System.Windows.Forms.Label labelDopColor;
+        private System.Windows.Forms.Panel panelMainColor;
         private System.Windows.Forms.Label labelMainColor;
     }
 }

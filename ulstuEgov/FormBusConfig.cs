@@ -24,7 +24,8 @@ namespace ulstuEgov
             panelBlue.MouseDown += panelColor_MouseDown;
             panelWhite.MouseDown += panelColor_MouseDown;
 
-            cancelButton.Click += (object sender, EventArgs e) => { Close(); };
+            cancelButton.Click += (object sender, EventArgs e) => { Close(); };
+
         }
 
         private void panelColor_MouseDown(object sender, MouseEventArgs e)
@@ -58,10 +59,10 @@ namespace ulstuEgov
         {
             if (bus != null)
             {
-                if (bus is BusWithAcсord)
+                if (bus is BusWithAccord)
                 {
                     (bus as
-                   BusWithAcсord).SetAccordColor((Color)e.Data.GetData(typeof(Color)));
+                   BusWithAccord).SetAccordColor((Color)e.Data.GetData(typeof(Color)));
                     Draw();
                 }
             }
@@ -95,12 +96,14 @@ namespace ulstuEgov
         {
             labelBaseBus.DoDragDrop(labelBaseBus.Text, DragDropEffects.Move |
            DragDropEffects.Copy);
-        }
+        }
+
         private void labelBusAccord_MouseDown(object sender, MouseEventArgs e)
         {
             labelBusWithAccord.DoDragDrop(labelBusWithAccord.Text, DragDropEffects.Move |
            DragDropEffects.Copy);
-        }        private void panelCar_DragEnter(object sender, DragEventArgs e)
+        }
+        private void panelCar_DragEnter(object sender, DragEventArgs e)
         {
             if (e.Data.GetDataPresent(DataFormats.Text))
             {
@@ -110,7 +113,8 @@ namespace ulstuEgov
             {
                 e.Effect = DragDropEffects.None;
             }
-        }        private void panelCar_DragDrop(object sender, DragEventArgs e)
+        }
+        private void panelCar_DragDrop(object sender, DragEventArgs e)
         {
             switch (e.Data.GetData(DataFormats.Text).ToString())
             {
@@ -118,11 +122,12 @@ namespace ulstuEgov
                     bus = new BaseBus(20, Color.White, 10, Color.Black);
                     break;
                 case "Автобус с Гармошкой":
-                    bus = new BusWithAcсord(20, Color.White, 10, Color.Black, Color.Black, 20, 1, 50);
+                    bus = new BusWithAccord(20, Color.White, 10, Color.Black, Color.Black, 20, 1, 50);
                     break;
             }
             Draw();
-        }
+        }
+
 
         private void AddButton_Click(object sender, EventArgs e)
         {

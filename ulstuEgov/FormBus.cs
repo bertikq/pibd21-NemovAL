@@ -191,7 +191,7 @@ namespace ulstuEgov
 
         private void ButtonCreateBusWithAccord(object sender, EventArgs e)
         {
-            bus = new BusWithAcсord(15, Color.Black, 15, Color.Red, Color.Green, 40, 2, 100);
+            bus = new BusWithAccord(15, Color.Black, 15, Color.Red, Color.Green, 40, 2, 100);
             bus.SetPosition(fieldDraw.Width / 2, fieldDraw.Height / 2, fieldDraw.Width, fieldDraw.Height);
             Draw();
         }

@@ -28,6 +28,27 @@ namespace ulstuEgov
             maxCount = size;
         }
 
+        public T this[int ind]
+        {
+            get
+            {
+                if (places.ContainsKey(ind))
+                {
+                    return places[ind];
+                }
+                return null;
+            }
+            set
+            {
+                if (CheckFreePlace(ind))
+                {
+                    places.Add(ind, value);
+                    places[ind].SetPosition(widthSizePlace / 2 + ind / 5 * widthSizePlace + 5 - 50, 
+                        ind % 5 * heightSizePlace + heightSizePlace / 2, WidthWindow, HeightWindow);
+                }
+            }
+        }
+
         public static int operator +(BusTerminal<T> busTerminal, T bus)
         {
             if (busTerminal.places.Count == busTerminal.maxCount)

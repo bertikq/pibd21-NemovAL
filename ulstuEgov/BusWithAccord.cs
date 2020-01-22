@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ulstuEgov
 {
-    class BusWithAcсord : BaseBus
+    class BusWithAccord : BaseBus
     {
         public Color accordColor { private set; get; }
 
@@ -17,13 +17,29 @@ namespace ulstuEgov
 
         public int widthHalfBus { private set; get; }
 
-        public BusWithAcсord(int speed, Color mainColor, float radWheel, Color colorWheels,
+        public BusWithAccord(int speed, Color mainColor, float radWheel, Color colorWheels,
             Color accordColor, int widthAccord, int paddingAccord, int widthHalfBus) : base(speed, mainColor, radWheel, colorWheels)
         {
             this.accordColor = accordColor;
             this.widthAccord = widthAccord;
             this.paddingAccord = paddingAccord;
             this.widthHalfBus = widthHalfBus;
+        }
+
+        public BusWithAccord(string save) : base(save)
+        {
+            string[] mas = save.Split(';');
+            if (mas.Length == 8)
+            {
+                speed = int.Parse(mas[0]);
+                mainColor = Color.FromName(mas[1]);
+                radWheel = float.Parse(mas[2]);
+                colorWheels = Color.FromName(mas[3]);
+                accordColor = Color.FromName(mas[4]);
+                widthAccord = int.Parse(mas[5]);
+                paddingAccord = int.Parse(mas[6]);
+                widthHalfBus = int.Parse(mas[7]);
+            }
         }
 
         public override void Draw(Graphics g)
@@ -44,6 +60,12 @@ namespace ulstuEgov
         public void SetAccordColor(Color color)
         {
             accordColor = color;
+        }
+
+        public override string ToString()
+        {
+            return base.ToString() + ";" + 
+                String.Join(";", new object[] { accordColor.Name, widthAccord, paddingAccord, widthHalfBus });
         }
     }
 }

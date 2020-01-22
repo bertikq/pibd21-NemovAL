@@ -63,7 +63,7 @@ namespace ulstuEgov
                     ColorDialog dialogDop = new ColorDialog();
                     if (dialogDop.ShowDialog() == DialogResult.OK)
                     {
-                        var bus = new BusWithAcсord(20, dialog.Color, 10, Color.Black, dialogDop.Color, 20, 1, 50);
+                        var bus = new BusWithAccord(20, dialog.Color, 10, Color.Black, dialogDop.Color, 20, 1, 50);
                         int place = levelTerminal[listBoxLevels.SelectedIndex] + bus;
                         if (place == -1)
                         {
@@ -129,6 +129,41 @@ namespace ulstuEgov
                 {
                     MessageBox.Show("Машину не удалось поставить");
                 }
+            }
+        }
+
+        private void СохранитьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (saveFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                if (levelTerminal.SaveData(saveFileDialog.FileName))
+                {
+                    MessageBox.Show("Сохранение прошло успешно", "Результат",
+                   MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Не сохранилось", "Результат",
+                   MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void ЗагрузитьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (openFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                if (levelTerminal.LoadData(openFileDialog.FileName))
+                {
+                MessageBox.Show("Загрузили", "Результат", MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Не загрузили", "Результат", MessageBoxButtons.OK,
+                   MessageBoxIcon.Error);
+                }
+                Draw();
             }
         }
     }
