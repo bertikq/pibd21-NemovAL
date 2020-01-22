@@ -32,7 +32,7 @@
             this.pictureBoxTake = new System.Windows.Forms.PictureBox();
             this.getCar = new System.Windows.Forms.Button();
             this.maskedTextBoxIndex = new System.Windows.Forms.MaskedTextBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.labelPlaceText = new System.Windows.Forms.Label();
             this.pictureBoxTerminal = new System.Windows.Forms.PictureBox();
             this.listBoxLevels = new System.Windows.Forms.ListBox();
             this.selectAuto = new System.Windows.Forms.Button();
@@ -54,7 +54,7 @@
             this.groupBoxGetCar.Controls.Add(this.pictureBoxTake);
             this.groupBoxGetCar.Controls.Add(this.getCar);
             this.groupBoxGetCar.Controls.Add(this.maskedTextBoxIndex);
-            this.groupBoxGetCar.Controls.Add(this.label1);
+            this.groupBoxGetCar.Controls.Add(this.labelPlaceText);
             this.groupBoxGetCar.Location = new System.Drawing.Point(511, 248);
             this.groupBoxGetCar.Name = "groupBoxGetCar";
             this.groupBoxGetCar.Size = new System.Drawing.Size(277, 188);
@@ -87,14 +87,14 @@
             this.maskedTextBoxIndex.Size = new System.Drawing.Size(63, 22);
             this.maskedTextBoxIndex.TabIndex = 1;
             // 
-            // label1
+            // labelPlaceText
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(58, 44);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(57, 17);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Место :";
+            this.labelPlaceText.AutoSize = true;
+            this.labelPlaceText.Location = new System.Drawing.Point(58, 44);
+            this.labelPlaceText.Name = "labelPlaceText";
+            this.labelPlaceText.Size = new System.Drawing.Size(57, 17);
+            this.labelPlaceText.TabIndex = 0;
+            this.labelPlaceText.Text = "Место :";
             // 
             // pictureBoxTerminal
             // 
@@ -208,7 +208,7 @@
         private System.Windows.Forms.PictureBox pictureBoxTerminal;
         private System.Windows.Forms.GroupBox groupBoxGetCar;
         private System.Windows.Forms.MaskedTextBox maskedTextBoxIndex;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label labelPlaceText;
         private System.Windows.Forms.PictureBox pictureBoxTake;
         private System.Windows.Forms.Button getCar;
         private System.Windows.Forms.ListBox listBoxLevels;
