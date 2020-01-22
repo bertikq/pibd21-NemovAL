@@ -46,6 +46,7 @@ namespace ulstuEgov
                     places[ind].SetPosition(widthSizePlace / 2 + ind / 5 * widthSizePlace + 5 - 50, 
                         ind % 5 * heightSizePlace + heightSizePlace / 2, WidthWindow, HeightWindow);
                 }
+                else throw new ParkingOccupiedPlaceException(ind);
             }
         }
 
@@ -53,7 +54,7 @@ namespace ulstuEgov
         {
             if (busTerminal.places.Count == busTerminal.maxCount)
             {
-                return -1;
+                throw new ParkingOverflowException();
             }
             for (int i = 0; i < busTerminal.maxCount; i++)
             {
@@ -77,7 +78,7 @@ namespace ulstuEgov
                 busTerminal.places.Remove(index);
                 return bus;
             }
-            return null;
+            throw new ParkingNotFoundException(index);
         }
 
         public void Draw(Graphics g)

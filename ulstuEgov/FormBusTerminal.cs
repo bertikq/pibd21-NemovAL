@@ -1,4 +1,5 @@
-﻿using System;
+using NLog;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,9 +16,12 @@ namespace ulstuEgov
         MultiLevelParking levelTerminal;
 
         private const int countLevel = 5;
+
+        private Logger logger;
         public FormBusTerminal()
         {
             InitializeComponent();
+            logger = LogManager.GetCurrentClassLogger();
             levelTerminal = new MultiLevelParking(countLevel, pictureBoxTerminal.Width, pictureBoxTerminal.Height);
             for (int i = 0; i < countLevel; i++)
             {
@@ -82,24 +86,34 @@ namespace ulstuEgov
             {
                 if (maskedTextBoxIndex.Text != "")
                 {
-                    var car = levelTerminal[listBoxLevels.SelectedIndex] - Convert.ToInt32(maskedTextBoxIndex.Text);
-                    if (car != null)
+                    try
                     {
+                        var car = levelTerminal[listBoxLevels.SelectedIndex] - Convert.ToInt32(maskedTextBoxIndex.Text);
                         Bitmap bmp = new Bitmap(pictureBoxTake.Width,
-                       pictureBoxTake.Height);
+                        pictureBoxTake.Height);
                         Graphics g = Graphics.FromImage(bmp);
                         car.SetPosition(pictureBoxTake.Width / 2 - 30, pictureBoxTake.Height / 2, pictureBoxTake.Width,
-                       pictureBoxTake.Height);
+                        pictureBoxTake.Height);
                         car.Draw(g);
                         pictureBoxTake.Image = bmp;
+                        logger.Info("Изъят автомобиль " + car.ToString() + " с места " + maskedTextBoxIndex.Text);
+                        Draw();
                     }
-                    else
+                    catch (ParkingNotFoundException ex)
                     {
+                        MessageBox.Show(ex.Message, "Не найдено", MessageBoxButtons.OK,
+                       MessageBoxIcon.Error);
+                        logger.Error(ex);
                         Bitmap bmp = new Bitmap(pictureBoxTake.Width,
                        pictureBoxTake.Height);
                         pictureBoxTake.Image = bmp;
                     }
-                    Draw();
+                    catch (Exception ex)
+                    {
+                        logger.Error(ex);
+                        MessageBox.Show(ex.Message, "Неизвестная ошибка",
+                       MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
             }
         }
@@ -120,14 +134,23 @@ namespace ulstuEgov
         {
             if (car != null && listBoxLevels.SelectedIndex > -1)
             {
-                int place = levelTerminal[listBoxLevels.SelectedIndex] + car;
-                if (place > -1)
+                try
                 {
+                    int place = levelTerminal[listBoxLevels.SelectedIndex] + car;
+                    logger.Info("Добавлен автомобиль " + car.ToString() + " на место " + place);
                     Draw();
                 }
-                else
+                catch (ParkingOverflowException ex)
                 {
-                    MessageBox.Show("Машину не удалось поставить");
+                    logger.Error(ex);
+                    MessageBox.Show(ex.Message, "Переполнение", MessageBoxButtons.OK,
+                   MessageBoxIcon.Error);
+                }
+                catch (Exception ex)
+                {
+                    logger.Error(ex);
+                    MessageBox.Show(ex.Message, "Неизвестная ошибка",
+                   MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -136,16 +159,20 @@ namespace ulstuEgov
         {
             if (saveFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                if (levelTerminal.SaveData(saveFileDialog.FileName))
+                try
                 {
+                    levelTerminal.SaveData(saveFileDialog.FileName);
                     MessageBox.Show("Сохранение прошло успешно", "Результат",
-                   MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    logger.Info("Сохранено в файл " + saveFileDialog.FileName);
                 }
-                else
+                catch (Exception ex)
                 {
-                    MessageBox.Show("Не сохранилось", "Результат",
+                    logger.Error(ex);
+                    MessageBox.Show(ex.Message, "Неизвестная ошибка при сохранении",
                    MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+
             }
         }
 
@@ -153,15 +180,24 @@ namespace ulstuEgov
         {
             if (openFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                if (levelTerminal.LoadData(openFileDialog.FileName))
+                try
                 {
-                MessageBox.Show("Загрузили", "Результат", MessageBoxButtons.OK,
+                    levelTerminal.LoadData(openFileDialog.FileName);
+                    MessageBox.Show("Загрузили", "Результат", MessageBoxButtons.OK,
                     MessageBoxIcon.Information);
+                    logger.Info("Загружено из файла " + openFileDialog.FileName);
                 }
-                else
+                catch (ParkingOccupiedPlaceException ex)
                 {
-                    MessageBox.Show("Не загрузили", "Результат", MessageBoxButtons.OK,
+                    logger.Error(ex);
+                    MessageBox.Show(ex.Message, "Занятое место", MessageBoxButtons.OK,
                    MessageBoxIcon.Error);
+                }
+                catch (Exception ex)
+                {
+                    logger.Error(ex);
+                    MessageBox.Show(ex.Message, "Неизвестная ошибка при сохранении",
+                   MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 Draw();
             }
