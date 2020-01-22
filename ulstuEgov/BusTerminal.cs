@@ -46,7 +46,7 @@ namespace ulstuEgov
                 {
                     return places[ind];
                 }
-                return null;
+                throw new ParkingNotFoundException(ind);
             }
             set
             {

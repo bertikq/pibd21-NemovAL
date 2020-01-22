@@ -96,6 +96,7 @@ namespace ulstuEgov
                         pictureBoxTake.Height);
                         car.Draw(g);
                         pictureBoxTake.Image = bmp;
+                        logger.Info("Изъят автомобиль " + car.ToString() + " с места " + maskedTextBoxIndex.Text);
                         Draw();
                     }
                     catch (ParkingNotFoundException ex)
@@ -144,6 +145,11 @@ namespace ulstuEgov
                     logger.Error(ex);
                     MessageBox.Show(ex.Message, "Переполнение", MessageBoxButtons.OK,
                    MessageBoxIcon.Error);
+                }
+                catch (ParkingAlreadyHaveException ex)
+                {
+                    MessageBox.Show(ex.Message, "Дублирование", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
                 }
                 catch (Exception ex)
                 {
