@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ulstuEgov
 {
-    class BusWithAccord : BaseBus
+    class BusWithAccord : BaseBus, IComparable<BusWithAccord>, IEquatable<BusWithAccord>
     {
         public Color accordColor { private set; get; }
 
@@ -66,6 +66,83 @@ namespace ulstuEgov
         {
             return base.ToString() + ";" + 
                 String.Join(";", new object[] { accordColor.Name, widthAccord, paddingAccord, widthHalfBus });
+        }
+
+        public int CompareTo(BusWithAccord other)
+        {
+            var res = (this is BaseBus).CompareTo(other is BaseBus);
+            if (res != 0)
+            {
+                return res;
+            }
+            if (accordColor != other.accordColor)
+            {
+                accordColor.Name.CompareTo(other.accordColor.Name);
+            }
+            if (widthAccord != other.widthAccord)
+            {
+                return widthAccord.CompareTo(other.widthAccord);
+            }
+            if (paddingAccord != other.paddingAccord)
+            {
+                return paddingAccord.CompareTo(other.paddingAccord);
+            }
+            if (widthHalfBus != other.widthHalfBus)
+            {
+                return widthHalfBus.CompareTo(other.widthHalfBus);
+            }
+            return 0;
+        }
+
+        public bool Equals(BusWithAccord other)
+        {
+            var res = (this as BaseBus).Equals(other as BaseBus);
+            if (!res)
+            {
+                return res;
+            }
+            if (GetType().Name != other.GetType().Name)
+            {
+                return false;
+            }
+            if (accordColor != other.accordColor)
+            {
+                return false;
+            }
+            if (widthAccord != other.widthAccord)
+            {
+                return false;
+            }
+            if (paddingAccord != other.paddingAccord)
+            {
+                return false;
+            }
+            if (widthHalfBus != other.widthHalfBus)
+            {
+                return false;
+            }
+            return true;
+        }
+
+        public override bool Equals(Object obj)
+        {
+            if (obj == null)
+            {
+                return false;
+            }
+            if (!(obj is BusWithAccord bus))
+            {
+                return false;
+            }
+            else
+            {
+                return Equals(bus);
+            }
+        }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
         }
     }
 }

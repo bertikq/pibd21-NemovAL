@@ -146,6 +146,11 @@ namespace ulstuEgov
                     MessageBox.Show(ex.Message, "Переполнение", MessageBoxButtons.OK,
                    MessageBoxIcon.Error);
                 }
+                catch (ParkingAlreadyHaveException ex)
+                {
+                    MessageBox.Show(ex.Message, "Дублирование", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                }
                 catch (Exception ex)
                 {
                     logger.Error(ex);
@@ -201,6 +206,12 @@ namespace ulstuEgov
                 }
                 Draw();
             }
+        }
+        private void ButtonSort_Click(object sender, EventArgs e)
+        {
+            levelTerminal.Sort();
+            Draw();
+            logger.Info("Сортировка уровней");
         }
     }
 }

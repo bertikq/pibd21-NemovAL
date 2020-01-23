@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -7,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace ulstuEgov
 {
-    class BusTerminal<T> where T : class, ITransport
+    class BusTerminal<T> : IEnumerator<T>, IEnumerable<T>, IComparable<BusTerminal<T>> where T : class, ITransport
     {
 
         Dictionary<int, T> places;
-        
+
         private int WidthWindow { get; set; }
         private int HeightWindow { get; set; }
 
@@ -19,6 +20,14 @@ namespace ulstuEgov
 
         private const int widthSizePlace = 200;
         private const int heightSizePlace = 50;
+        private int currentIndex;
+        public int GetKey
+        {
+            get
+            {
+                return places.Keys.ToList()[currentIndex];
+            }
+        }
 
         public BusTerminal(int size, int widthWindow, int heightWindow)
         {
@@ -26,6 +35,7 @@ namespace ulstuEgov
             WidthWindow = widthWindow;
             HeightWindow = heightWindow;
             maxCount = size;
+            currentIndex = -1;
         }
 
         public T this[int ind]
@@ -36,14 +46,14 @@ namespace ulstuEgov
                 {
                     return places[ind];
                 }
-                return null;
+                throw new ParkingNotFoundException(ind);
             }
             set
             {
                 if (CheckFreePlace(ind))
                 {
                     places.Add(ind, value);
-                    places[ind].SetPosition(widthSizePlace / 2 + ind / 5 * widthSizePlace + 5 - 50, 
+                    places[ind].SetPosition(widthSizePlace / 2 + ind / 5 * widthSizePlace + 5 - 50,
                         ind % 5 * heightSizePlace + heightSizePlace / 2, WidthWindow, HeightWindow);
                 }
                 else throw new ParkingOccupiedPlaceException(ind);
@@ -55,6 +65,10 @@ namespace ulstuEgov
             if (busTerminal.places.Count == busTerminal.maxCount)
             {
                 throw new ParkingOverflowException();
+            }
+            if (busTerminal.places.ContainsValue(bus))
+            {
+                throw new ParkingAlreadyHaveException();
             }
             for (int i = 0; i < busTerminal.maxCount; i++)
             {
@@ -109,6 +123,92 @@ namespace ulstuEgov
         private bool CheckFreePlace(int indexPlace)
         {
             return !places.ContainsKey(indexPlace);
-        } 
+        }
+
+        public T Current
+        {
+            get
+            {
+                return places[places.Keys.ToList()[currentIndex]];
+            }
+        }
+        object IEnumerator.Current
+        {
+            get
+            {
+                return Current;
+            }
+        }
+        public bool MoveNext()
+        {
+            if (currentIndex + 1 >= places.Count)
+            {
+                Reset();
+                return false;
+            }
+            currentIndex++;
+            return true;
+        }
+        public void Reset()
+        {
+            currentIndex = -1;
+        }
+
+        public IEnumerator<T> GetEnumerator()
+        {
+            return this;
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
+        }
+        public void Dispose()
+        {
+            places.Clear();
+        }
+
+        public int CompareTo(BusTerminal<T> other)
+        {
+            if (places.Count > other.places.Count)
+            {
+                return -1;
+            }
+            else if (places.Count < other.places.Count)
+            {
+                return 1;
+            }
+            else if (places.Count > 0)
+            {
+                var thisKeys = places.Keys.ToList();
+                for (int i = 0; i < places.Count; ++i)
+                {
+                    if (places[thisKeys[i]] is BaseBus && other.places[thisKeys[i]] is BusWithAccord)
+                    {
+                        return 1;
+                    }
+                    if (places[thisKeys[i]] is BusWithAccord && other.places[thisKeys[i]]
+                    is BaseBus)
+                    {
+                        return -1;
+                    }
+                    if (places[thisKeys[i]] is BaseBus && other.places[thisKeys[i]] is
+                    BaseBus)
+                    {
+                        return (places[thisKeys[i]] is
+                       BaseBus).CompareTo(other.places[thisKeys[i]] is BaseBus);
+                    }
+                    if (places[thisKeys[i]] is BusWithAccord && other.places[thisKeys[i]]
+                    is BusWithAccord)
+                    {
+                        return (places[thisKeys[i]] is
+                       BusWithAccord).CompareTo(other.places[thisKeys[i]] is BusWithAccord);
+                    }
+                }
+            }
+            return 0;
+        }
+
+
     }
 }
